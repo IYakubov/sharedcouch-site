@@ -1,0 +1,38 @@
+# Shared Couch front door.
+# Shows the catalog website at / and forwards each game path to its own
+# Railway service over the private network. Each game sees requests as if
+# it lived at "/", plus an X-Forwarded-Prefix header so its QR code points
+# to the right public address.
+{
+	admin off
+	auto_https off
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+(game) {
+	redir /{args[0]} /{args[0]}/ 308
+	handle_path /{args[0]}/* {
+		reverse_proxy {args[1]} {
+			header_up X-Forwarded-Prefix /{args[0]}
+			header_up X-Forwarded-Proto {$PUBLIC_PROTO:https}
+		}
+	}
+}
+
+:{$PORT:8080} {
+	encode gzip
+
+	import game tankwar       {$TANKWAR_UPSTREAM:tankbattle.railway.internal:8080}
+	import game mathduel      {$MATHDUEL_UPSTREAM:mathduel.railway.internal:8080}
+	import game countingclash {$COUNTINGCLASH_UPSTREAM:cubez.railway.internal:8080}
+	import game navalduel     {$NAVALDUEL_UPSTREAM:shipyy.railway.internal:8080}
+	import game rockdrift     {$ROCKDRIFT_UPSTREAM:meteofight.railway.internal:8080}
+
+	handle {
+		root * {$SITE_ROOT:/srv}
+		try_files {path} /index.html
+		file_server
+	}
+}
