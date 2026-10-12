@@ -155,6 +155,22 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 .hero-glow::before{content:"";position:absolute;inset:6% 4% 14%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.85),rgba(169,195,230,.45) 45%,rgba(207,189,234,0) 75%);filter:blur(30px);z-index:-1}
 
 @media (prefers-reduced-motion: reduce){.aurora i{animation:none}}
+/* ---- "game being built" loop on the coming-soon tile ---- */
+.bld .bld-fill{transform-box:view-box;transform-origin:0 150px;animation:bld-fill 6s cubic-bezier(.45,.05,.35,1) infinite}
+.bld .bld-scan{transform-box:view-box;animation:bld-scan 6s cubic-bezier(.45,.05,.35,1) infinite}
+.bld .bld-bar{transform-box:fill-box;transform-origin:left center;animation:bld-bar 6s cubic-bezier(.45,.05,.35,1) infinite}
+.bld .bld-outline{animation:bld-dash 1.6s linear infinite}
+.bld .bld-spark{transform-box:fill-box;transform-origin:center;opacity:0}
+.bld .bld-s1{animation:bld-pop 6s ease-out infinite .9s}
+.bld .bld-s2{animation:bld-pop 6s ease-out infinite 2.2s}
+.bld .bld-s3{animation:bld-pop 6s ease-out infinite 3.4s}
+@keyframes bld-fill{0%{transform:scaleY(0)}10%{transform:scaleY(.08)}70%{transform:scaleY(1)}86%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes bld-scan{0%{transform:translateY(150px);opacity:0}10%{transform:translateY(138px);opacity:.9}70%{transform:translateY(20px);opacity:.9}78%{opacity:0}100%{transform:translateY(20px);opacity:0}}
+@keyframes bld-bar{0%{transform:scaleX(0)}70%{transform:scaleX(1)}86%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+@keyframes bld-dash{to{stroke-dashoffset:-38}}
+@keyframes bld-pop{0%{opacity:0;transform:scale(.3) rotate(0)}6%{opacity:1;transform:scale(1.15) rotate(45deg)}14%{opacity:0;transform:scale(.6) rotate(90deg)}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.bld *{animation:none !important}.bld .bld-fill{transform:scaleY(.6)}.bld .bld-bar{transform:scaleX(.6)}}
+
 </style>
 </head>
 <body>
@@ -511,9 +527,23 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 </div>
 <div class="sc-soon" style="display: contents">
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 0; border: 2px dashed #a9a7a0; border-radius: 16px; padding: 20px; text-align: center">
-<svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="#7d7b75" stroke-width="2"></circle><path d="M22 13v18M13 22h18" stroke="#7d7b75" stroke-width="2" stroke-linecap="round"></path></svg>
-<div style="font-size: 15px; font-weight: 600; color: #4a4945">More games coming</div>
-<div style="font-size: 12px; font-weight: 300; color: #4a4945; max-width: 200px; line-height: 1.5">New couch games are in the works.</div>
+<svg class="bld" width="220" height="150" viewBox="0 0 220 150" role="img" aria-label="A new game being built">
+<defs>
+<pattern id="bldgrid" width="11" height="11" patternUnits="userSpaceOnUse"><path d="M11 0H0V11" fill="none" stroke="#1A4361" stroke-opacity=".12" stroke-width="1"></path></pattern>
+<clipPath id="bldclip"><rect class="bld-fill" x="0" y="0" width="220" height="150"></rect></clipPath>
+</defs>
+<rect x="1" y="1" width="218" height="148" rx="12" fill="url(#bldgrid)"></rect>
+<g transform="translate(37.4 22) scale(0.2)"><path d="M162.5 455.3 C147.1 453.3 128.8 447.8 114.4 441.0 C98.3 433.2 86.9 425.1 72.9 411.1 C52.6 390.8 43.5 375.1 32.5 341.6 C22.6 311.7 14.8 279.2 9.0 243.7 C-7.4 144.5 -0.1 68.1 29.3 29.5 C53.6 -2.3 92.0 -8.6 134.0 12.5 C160.3 25.7 193.4 54.0 220.5 86.5 C226.0 93.1 233.4 101.5 237.0 105.3 C251.1 120.3 267.8 128.3 295.5 133.3 C307.0 135.4 310.0 135.5 371.5 135.5 L435.5 135.5 L444.5 132.7 C466.9 125.8 481.3 115.7 498.6 94.9 C542.2 42.5 580.7 12.7 617.5 2.7 C623.8 1.0 628.3 0.6 639.0 0.6 C651.6 0.5 653.1 0.8 661.3 3.7 C671.8 7.4 679.2 11.8 687.0 18.7 C706.1 36.0 718.1 64.8 723.7 106.5 C726.0 124.4 726.0 172.8 723.7 196.0 C715.4 277.0 694.3 356.0 672.3 388.7 C651.4 419.6 620.7 441.5 584.5 451.0 C570.2 454.8 560.6 456.0 545.8 456.0 C514.3 456.0 487.7 447.6 457.5 428.0 C439.1 416.1 424.1 409.6 405.5 405.4 C394.6 403.0 368.1 402.5 352.2 404.4 C312.6 409.2 283.4 418.1 263.5 431.4 C239.4 447.4 209.4 456.2 179.7 455.9 C171.9 455.8 164.2 455.5 162.5 455.3 Z M195.3 373.6 C213.9 364.6 217.5 338.6 202.1 324.7 C196.0 319.2 192.3 317.7 183.9 317.2 C174.3 316.6 167.8 318.6 161.6 324.1 C151.9 332.7 148.7 346.9 153.9 358.8 C156.9 365.5 165.4 373.4 171.8 375.5 C179.0 377.8 188.4 377.0 195.3 373.6 Z M562.3 366.8 C564.6 365.5 567.8 362.6 569.5 360.2 L572.5 355.8 L572.8 331.9 L573.1 308.0 L595.6 308.0 C613.6 308.0 618.8 307.7 621.8 306.5 C638.2 299.6 638.5 276.8 622.3 268.6 C619.6 267.3 615.3 267.0 596.0 267.0 L573.0 267.0 L573.0 245.4 C573.0 220.4 572.4 217.4 566.4 211.4 C556.6 201.6 540.3 204.0 533.7 216.3 C531.6 220.2 531.5 221.9 531.2 243.8 L530.9 267.0 L507.9 267.0 C487.1 267.0 484.6 267.2 481.1 269.0 C466.4 276.4 466.3 298.0 480.9 305.7 C485.1 307.9 486.2 308.0 508.1 308.0 L530.9 308.0 L531.2 331.2 L531.5 354.5 L534.2 359.2 C540.2 369.2 552.0 372.4 562.3 366.8 Z M129.3 316.5 C136.9 314.5 142.3 311.0 146.4 305.3 C155.1 293.3 154.2 277.6 144.0 266.6 C138.3 260.4 131.4 257.6 122.0 257.5 C109.8 257.5 100.5 263.2 94.9 274.3 C91.9 280.1 91.2 290.2 93.4 296.8 C96.5 306.1 106.0 314.6 115.7 316.9 C121.2 318.2 123.0 318.2 129.3 316.5 Z M248.3 316.5 C262.8 312.7 271.7 301.0 271.3 286.0 C271.0 275.2 263.7 264.3 253.7 259.9 C245.9 256.4 235.4 256.6 227.8 260.3 C217.7 265.2 212.0 274.0 211.2 285.5 C210.3 300.7 219.8 313.4 234.7 316.9 C240.2 318.2 242.0 318.2 248.3 316.5 Z M194.5 255.2 C197.8 253.6 202.0 250.6 203.9 248.5 C220.7 229.3 209.1 200.0 184.0 198.2 C176.1 197.7 170.9 199.0 164.7 203.1 C155.1 209.4 149.5 222.7 151.9 233.4 C153.6 241.0 158.6 248.7 164.4 252.7 C170.4 256.8 173.7 257.8 182.0 257.9 C187.2 258.0 189.7 257.4 194.5 255.2 Z" fill="none" stroke="#1A4361" stroke-opacity=".55" stroke-width="7" stroke-dasharray="22 16" fill-rule="evenodd" class="bld-outline"></path></g>
+<g clip-path="url(#bldclip)"><g transform="translate(37.4 22) scale(0.2)"><path d="M162.5 455.3 C147.1 453.3 128.8 447.8 114.4 441.0 C98.3 433.2 86.9 425.1 72.9 411.1 C52.6 390.8 43.5 375.1 32.5 341.6 C22.6 311.7 14.8 279.2 9.0 243.7 C-7.4 144.5 -0.1 68.1 29.3 29.5 C53.6 -2.3 92.0 -8.6 134.0 12.5 C160.3 25.7 193.4 54.0 220.5 86.5 C226.0 93.1 233.4 101.5 237.0 105.3 C251.1 120.3 267.8 128.3 295.5 133.3 C307.0 135.4 310.0 135.5 371.5 135.5 L435.5 135.5 L444.5 132.7 C466.9 125.8 481.3 115.7 498.6 94.9 C542.2 42.5 580.7 12.7 617.5 2.7 C623.8 1.0 628.3 0.6 639.0 0.6 C651.6 0.5 653.1 0.8 661.3 3.7 C671.8 7.4 679.2 11.8 687.0 18.7 C706.1 36.0 718.1 64.8 723.7 106.5 C726.0 124.4 726.0 172.8 723.7 196.0 C715.4 277.0 694.3 356.0 672.3 388.7 C651.4 419.6 620.7 441.5 584.5 451.0 C570.2 454.8 560.6 456.0 545.8 456.0 C514.3 456.0 487.7 447.6 457.5 428.0 C439.1 416.1 424.1 409.6 405.5 405.4 C394.6 403.0 368.1 402.5 352.2 404.4 C312.6 409.2 283.4 418.1 263.5 431.4 C239.4 447.4 209.4 456.2 179.7 455.9 C171.9 455.8 164.2 455.5 162.5 455.3 Z M195.3 373.6 C213.9 364.6 217.5 338.6 202.1 324.7 C196.0 319.2 192.3 317.7 183.9 317.2 C174.3 316.6 167.8 318.6 161.6 324.1 C151.9 332.7 148.7 346.9 153.9 358.8 C156.9 365.5 165.4 373.4 171.8 375.5 C179.0 377.8 188.4 377.0 195.3 373.6 Z M562.3 366.8 C564.6 365.5 567.8 362.6 569.5 360.2 L572.5 355.8 L572.8 331.9 L573.1 308.0 L595.6 308.0 C613.6 308.0 618.8 307.7 621.8 306.5 C638.2 299.6 638.5 276.8 622.3 268.6 C619.6 267.3 615.3 267.0 596.0 267.0 L573.0 267.0 L573.0 245.4 C573.0 220.4 572.4 217.4 566.4 211.4 C556.6 201.6 540.3 204.0 533.7 216.3 C531.6 220.2 531.5 221.9 531.2 243.8 L530.9 267.0 L507.9 267.0 C487.1 267.0 484.6 267.2 481.1 269.0 C466.4 276.4 466.3 298.0 480.9 305.7 C485.1 307.9 486.2 308.0 508.1 308.0 L530.9 308.0 L531.2 331.2 L531.5 354.5 L534.2 359.2 C540.2 369.2 552.0 372.4 562.3 366.8 Z M129.3 316.5 C136.9 314.5 142.3 311.0 146.4 305.3 C155.1 293.3 154.2 277.6 144.0 266.6 C138.3 260.4 131.4 257.6 122.0 257.5 C109.8 257.5 100.5 263.2 94.9 274.3 C91.9 280.1 91.2 290.2 93.4 296.8 C96.5 306.1 106.0 314.6 115.7 316.9 C121.2 318.2 123.0 318.2 129.3 316.5 Z M248.3 316.5 C262.8 312.7 271.7 301.0 271.3 286.0 C271.0 275.2 263.7 264.3 253.7 259.9 C245.9 256.4 235.4 256.6 227.8 260.3 C217.7 265.2 212.0 274.0 211.2 285.5 C210.3 300.7 219.8 313.4 234.7 316.9 C240.2 318.2 242.0 318.2 248.3 316.5 Z M194.5 255.2 C197.8 253.6 202.0 250.6 203.9 248.5 C220.7 229.3 209.1 200.0 184.0 198.2 C176.1 197.7 170.9 199.0 164.7 203.1 C155.1 209.4 149.5 222.7 151.9 233.4 C153.6 241.0 158.6 248.7 164.4 252.7 C170.4 256.8 173.7 257.8 182.0 257.9 C187.2 258.0 189.7 257.4 194.5 255.2 Z" fill="#1b1b1a" fill-rule="evenodd"></path></g></g>
+<rect class="bld-scan" x="20" y="0" width="180" height="2" rx="1" fill="#1A4361"></rect>
+<g class="bld-spark bld-s1"><path d="M44 30v8M40 34h8" stroke="#1A4361" stroke-width="1.6" stroke-linecap="round"></path></g>
+<g class="bld-spark bld-s2"><path d="M178 44v8M174 48h8" stroke="#6b5a9a" stroke-width="1.6" stroke-linecap="round"></path></g>
+<g class="bld-spark bld-s3"><path d="M168 108v6M165 111h6" stroke="#b06a55" stroke-width="1.6" stroke-linecap="round"></path></g>
+<rect x="50" y="128" width="120" height="6" rx="3" fill="#1b1b1a" fill-opacity=".1"></rect>
+<rect class="bld-bar" x="50" y="128" width="120" height="6" rx="3" fill="#1A4361"></rect>
+</svg>
+<div style="font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: #1b1b1a">New games coming soon</div>
+<div style="font-size: 12px; font-weight: 300; color: #3a3936; max-width: 230px; line-height: 1.5">The next couch game is being built right now.</div>
 </div>
 </div>
 </div>
