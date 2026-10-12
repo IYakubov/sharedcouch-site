@@ -124,17 +124,49 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 .hw .L-menu,.hw .L-qr,.hw .A-cam,.hw .B-cam,.hw .A-ready,.hw .B-ready,.hw .A-beam,.hw .B-beam,.hw .A-bullet,.hw .B-bullet,.hw .A-hit,.hw .B-hit,.hw .A-press{opacity:0}
 .cap4{opacity:1}
 }
+
+/* ---- Apple-style colour + glass layer ---- */
+.sc-root > :not(.aurora){position:relative;z-index:1}
+.aurora{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#e4e1da 0%,#d6d3cb 100%)}
+.aurora i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.8;will-change:transform}
+.aurora .b1{width:58vmax;height:58vmax;left:-14vmax;top:-22vmax;background:radial-gradient(circle,#f4c3a1 0%,rgba(244,195,161,0) 70%);animation:sc-drift1 28s ease-in-out infinite alternate}
+.aurora .b2{width:54vmax;height:54vmax;right:-16vmax;top:-12vmax;background:radial-gradient(circle,#a9c3e6 0%,rgba(169,195,230,0) 70%);animation:sc-drift2 34s ease-in-out infinite alternate}
+.aurora .b3{width:50vmax;height:50vmax;left:18vmax;bottom:-28vmax;background:radial-gradient(circle,#cfbdea 0%,rgba(207,189,234,0) 70%);animation:sc-drift3 31s ease-in-out infinite alternate}
+.aurora .b4{width:42vmax;height:42vmax;right:-6vmax;bottom:-18vmax;background:radial-gradient(circle,#bcdcc8 0%,rgba(188,220,200,0) 70%);animation:sc-drift1 37s ease-in-out infinite alternate-reverse}
+.aurora .b5{width:36vmax;height:36vmax;left:38vmax;top:-14vmax;background:radial-gradient(circle,rgba(255,255,255,.9) 0%,rgba(255,255,255,0) 70%);animation:sc-drift2 25s ease-in-out infinite alternate-reverse}
+@keyframes sc-drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(8vmax,6vmax) scale(1.12)}}
+@keyframes sc-drift2{0%{transform:translate(0,0) scale(1.05)}100%{transform:translate(-9vmax,7vmax) scale(.92)}}
+@keyframes sc-drift3{0%{transform:translate(0,0) scale(.95)}100%{transform:translate(7vmax,-8vmax) scale(1.1)}}
+
+.glass{background:rgba(255,255,255,.42) !important;-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);border:1px solid rgba(255,255,255,.7);box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 10px 30px -14px rgba(27,27,26,.35)}
+.glass-card{background:rgba(255,255,255,.48) !important;-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 0 0 1px rgba(27,27,26,.08),0 18px 40px -20px rgba(27,27,26,.35)}
+.navy-card{background:linear-gradient(140deg,#1A4361 0%,#24567a 45%,#4a5a95 100%) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 20px 40px -18px rgba(26,67,97,.6)}
+
+.sc-card{background:rgba(255,255,255,.5) !important;-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,.8) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1px rgba(27,27,26,.12),0 16px 36px -20px rgba(27,27,26,.4) !important}
+.sc-card:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 1px rgba(27,27,26,.14),0 26px 50px -22px rgba(27,27,26,.5) !important}
+.sc-card svg[preserveAspectRatio]{background:linear-gradient(160deg,rgba(255,255,255,.35),rgba(207,205,198,.55)) !important}
+
+.grad-text{background:linear-gradient(100deg,#1b1b1a 0%,#1b1b1a 30%,#1A4361 62%,#6b5a9a 88%,#b06a55 100%);-webkit-background-clip:text;background-clip:text;color:transparent !important}
+
+.btn-primary{background:linear-gradient(180deg,#34332f 0%,#141413 100%) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 10px 24px -10px rgba(27,27,26,.7);transition:transform .15s ease,box-shadow .15s ease}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 14px 30px -10px rgba(27,27,26,.75)}
+
+.hero-glow{position:relative}
+.hero-glow::before{content:"";position:absolute;inset:6% 4% 14%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.85),rgba(169,195,230,.45) 45%,rgba(207,189,234,0) 75%);filter:blur(30px);z-index:-1}
+
+@media (prefers-reduced-motion: reduce){.aurora i{animation:none}}
 </style>
 </head>
 <body>
-<div style="font-family: Unbounded, sans-serif; color: #1b1b1a; background: #cfcdc6; height: 100vh; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box">
+<div class="sc-root" style="font-family: Unbounded, sans-serif; color: #1b1b1a; background: transparent; position: relative; height: 100vh; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box">
+<div class="aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i><i class="b5"></i></div>
 
 <header style="flex: 0 0 auto; width: 100%; max-width: 1320px; margin: 0 auto; padding: 20px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
 <button type="button" data-go="home" style="all: unset; cursor: pointer; display: flex; align-items: center; gap: 12px">
 <svg width="46" height="29" viewBox="0 0 726 456" aria-hidden="true"><path fill="#1b1b1a" fill-rule="evenodd" d="M162.5 455.3 C147.1 453.3 128.8 447.8 114.4 441.0 C98.3 433.2 86.9 425.1 72.9 411.1 C52.6 390.8 43.5 375.1 32.5 341.6 C22.6 311.7 14.8 279.2 9.0 243.7 C-7.4 144.5 -0.1 68.1 29.3 29.5 C53.6 -2.3 92.0 -8.6 134.0 12.5 C160.3 25.7 193.4 54.0 220.5 86.5 C226.0 93.1 233.4 101.5 237.0 105.3 C251.1 120.3 267.8 128.3 295.5 133.3 C307.0 135.4 310.0 135.5 371.5 135.5 L435.5 135.5 L444.5 132.7 C466.9 125.8 481.3 115.7 498.6 94.9 C542.2 42.5 580.7 12.7 617.5 2.7 C623.8 1.0 628.3 0.6 639.0 0.6 C651.6 0.5 653.1 0.8 661.3 3.7 C671.8 7.4 679.2 11.8 687.0 18.7 C706.1 36.0 718.1 64.8 723.7 106.5 C726.0 124.4 726.0 172.8 723.7 196.0 C715.4 277.0 694.3 356.0 672.3 388.7 C651.4 419.6 620.7 441.5 584.5 451.0 C570.2 454.8 560.6 456.0 545.8 456.0 C514.3 456.0 487.7 447.6 457.5 428.0 C439.1 416.1 424.1 409.6 405.5 405.4 C394.6 403.0 368.1 402.5 352.2 404.4 C312.6 409.2 283.4 418.1 263.5 431.4 C239.4 447.4 209.4 456.2 179.7 455.9 C171.9 455.8 164.2 455.5 162.5 455.3 Z M195.3 373.6 C213.9 364.6 217.5 338.6 202.1 324.7 C196.0 319.2 192.3 317.7 183.9 317.2 C174.3 316.6 167.8 318.6 161.6 324.1 C151.9 332.7 148.7 346.9 153.9 358.8 C156.9 365.5 165.4 373.4 171.8 375.5 C179.0 377.8 188.4 377.0 195.3 373.6 Z M562.3 366.8 C564.6 365.5 567.8 362.6 569.5 360.2 L572.5 355.8 L572.8 331.9 L573.1 308.0 L595.6 308.0 C613.6 308.0 618.8 307.7 621.8 306.5 C638.2 299.6 638.5 276.8 622.3 268.6 C619.6 267.3 615.3 267.0 596.0 267.0 L573.0 267.0 L573.0 245.4 C573.0 220.4 572.4 217.4 566.4 211.4 C556.6 201.6 540.3 204.0 533.7 216.3 C531.6 220.2 531.5 221.9 531.2 243.8 L530.9 267.0 L507.9 267.0 C487.1 267.0 484.6 267.2 481.1 269.0 C466.4 276.4 466.3 298.0 480.9 305.7 C485.1 307.9 486.2 308.0 508.1 308.0 L530.9 308.0 L531.2 331.2 L531.5 354.5 L534.2 359.2 C540.2 369.2 552.0 372.4 562.3 366.8 Z M129.3 316.5 C136.9 314.5 142.3 311.0 146.4 305.3 C155.1 293.3 154.2 277.6 144.0 266.6 C138.3 260.4 131.4 257.6 122.0 257.5 C109.8 257.5 100.5 263.2 94.9 274.3 C91.9 280.1 91.2 290.2 93.4 296.8 C96.5 306.1 106.0 314.6 115.7 316.9 C121.2 318.2 123.0 318.2 129.3 316.5 Z M248.3 316.5 C262.8 312.7 271.7 301.0 271.3 286.0 C271.0 275.2 263.7 264.3 253.7 259.9 C245.9 256.4 235.4 256.6 227.8 260.3 C217.7 265.2 212.0 274.0 211.2 285.5 C210.3 300.7 219.8 313.4 234.7 316.9 C240.2 318.2 242.0 318.2 248.3 316.5 Z M194.5 255.2 C197.8 253.6 202.0 250.6 203.9 248.5 C220.7 229.3 209.1 200.0 184.0 198.2 C176.1 197.7 170.9 199.0 164.7 203.1 C155.1 209.4 149.5 222.7 151.9 233.4 C153.6 241.0 158.6 248.7 164.4 252.7 C170.4 256.8 173.7 257.8 182.0 257.9 C187.2 258.0 189.7 257.4 194.5 255.2 Z"></path></svg>
 <span style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em">Shared Couch</span>
 </button>
-<nav role="tablist" aria-label="Sections" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 5px; background: #dddbd4; border-radius: 999px">
+<nav class="glass" role="tablist" aria-label="Sections" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 5px; background: #dddbd4; border-radius: 999px">
 <button type="button" role="tab" class="sc-tab" data-tab="home" aria-selected="true">Home</button><button type="button" role="tab" class="sc-tab" data-tab="games" aria-selected="false">Games</button><button type="button" role="tab" class="sc-tab" data-tab="how" aria-selected="false">How it works</button><button type="button" role="tab" class="sc-tab" data-tab="about" aria-selected="false">About</button><button type="button" role="tab" class="sc-tab sc-tab-support" data-tab="support" aria-selected="false">Support</button>
 </nav>
 </header>
@@ -146,10 +178,10 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 <section class="sc-panel" aria-label="Home" style="flex: 1 1 auto; min-height: 0; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
 <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
 <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a4945">Party games · No app to install</div>
-<h1 style="margin: 0; font-size: 52px; line-height: 1.04; font-weight: 800; letter-spacing: -0.035em">Any screen is the console.<br>Your phone is the controller.</h1>
+<h1 class="grad-text" style="margin: 0; font-size: 52px; line-height: 1.04; font-weight: 800; letter-spacing: -0.035em">Any screen is the console.<br>Your phone is the controller.</h1>
 <p style="margin: 0; font-size: 16px; line-height: 1.6; font-weight: 300; max-width: 500px; color: #2c2b29">Open a game on your TV, laptop or tablet. Friends scan the QR code, tap Ready, and you're playing.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
-<button type="button" data-go="games" style="cursor: pointer; font-family: Unbounded, sans-serif; display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; background: #1b1b1a; color: #ecebe6; border: 0; border-radius: 999px; font-size: 14px; font-weight: 600">Browse all games <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button type="button" class="btn-primary" data-go="games" style="cursor: pointer; font-family: Unbounded, sans-serif; display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; background: #1b1b1a; color: #ecebe6; border: 0; border-radius: 999px; font-size: 14px; font-weight: 600">Browse all games <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
 <button type="button" data-go="how" style="cursor: pointer; font-family: Unbounded, sans-serif; display: inline-flex; align-items: center; padding: 16px 26px; background: transparent; border: 2px solid #1b1b1a; color: #1b1b1a; border-radius: 999px; font-size: 14px; font-weight: 500">How it works</button>
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px">
@@ -220,7 +252,7 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 </div>
 </div>
 </div>
-<div style="flex: 1 1 440px; min-width: 0; max-width: 620px; margin: 0 auto">
+<div class="hero-glow" style="flex: 1 1 440px; min-width: 0; max-width: 620px; margin: 0 auto">
 <svg class="hw" viewBox="0 0 560 400" style="width: 100%; height: auto; display: block; overflow: visible" role="img" aria-label="Animation: a game opens on the big screen, two phones scan the QR code, become controllers, and the game starts">
 <ellipse cx="280" cy="372" rx="240" ry="14" fill="#b9b7af"></ellipse>
 <rect x="60" y="30" width="440" height="260" rx="18" fill="#1b1b1a"></rect>
@@ -381,7 +413,7 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 <div class="sc-panelwrap" data-panel="games" hidden>
 <section class="sc-panel" aria-label="Games" style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 18px">
 <div style="flex: 0 0 auto; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
-<h2 style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">Games</h2>
+<h2 class="grad-text" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">Games</h2>
 <div role="group" aria-label="Filter by players" style="display: flex; flex-wrap: wrap; gap: 8px">
 <button type="button" class="sc-filter" data-filter="all" aria-pressed="true">All</button><button type="button" class="sc-filter" data-filter="solo" aria-pressed="false">1 player</button><button type="button" class="sc-filter" data-filter="duo" aria-pressed="false">2 players</button>
 </div>
@@ -494,27 +526,27 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 <div class="sc-panelwrap" data-panel="how" hidden>
 <section class="sc-panel" aria-label="How it works" style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px">
 <div style="display: flex; flex-direction: column; gap: 10px">
-<h2 style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">How it works</h2>
+<h2 class="grad-text" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">How it works</h2>
 <p style="margin: 0; font-size: 15px; font-weight: 300; line-height: 1.6; color: #2c2b29; max-width: 640px">The big screen runs the game. Each phone opens a controller page in the browser — nothing to download.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
-<div style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-height: 0">
+<div class="glass-card" style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-height: 0">
 <div style="display: flex; align-items: center; justify-content: space-between"><div style="font-size: 40px; font-weight: 800; color: #a9a7a0; line-height: 1">01</div><svg width="48" height="40" viewBox="0 0 48 40" aria-hidden="true"><rect x="2" y="2" width="44" height="28" rx="4" fill="none" stroke="#1b1b1a" stroke-width="2.5"></rect><path d="M16 38h16M24 30v8" stroke="#1b1b1a" stroke-width="2.5" stroke-linecap="round"></path></svg></div>
 <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Pick a game</div>
 <div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">Open Shared Couch on a TV, laptop or tablet, choose a game and press Create Game.</div>
 </div>
-<div style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-height: 0">
+<div class="glass-card" style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-height: 0">
 <div style="display: flex; align-items: center; justify-content: space-between"><div style="font-size: 40px; font-weight: 800; color: #a9a7a0; line-height: 1">02</div><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="3" width="13" height="13" fill="none" stroke="#1b1b1a" stroke-width="2.5"></rect><rect x="24" y="3" width="13" height="13" fill="none" stroke="#1b1b1a" stroke-width="2.5"></rect><rect x="3" y="24" width="13" height="13" fill="none" stroke="#1b1b1a" stroke-width="2.5"></rect><rect x="25" y="25" width="5" height="5" fill="#1b1b1a"></rect><rect x="32" y="32" width="5" height="5" fill="#1b1b1a"></rect></svg></div>
 <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Scan the QR</div>
 <div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">Each player scans the code with their phone camera. The controller opens in Chrome or the default browser.</div>
 </div>
-<div style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-height: 0">
+<div class="glass-card" style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 16px; min-height: 0">
 <div style="display: flex; align-items: center; justify-content: space-between"><div style="font-size: 40px; font-weight: 800; color: #a9a7a0; line-height: 1">03</div><svg width="56" height="36" viewBox="0 0 56 36" aria-hidden="true"><rect x="2" y="2" width="52" height="32" rx="8" fill="none" stroke="#1b1b1a" stroke-width="2.5"></rect><path d="M13 18h12M19 12v12" stroke="#1b1b1a" stroke-width="3" stroke-linecap="round"></path><circle cx="40" cy="18" r="5" fill="#1b1b1a"></circle></svg></div>
 <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.02em">Tap Ready and play</div>
 <div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">When every player is ready, the round starts. Some games, like Counting Clash and Rock Drift, also work solo.</div>
 </div>
 </div>
-<div><button type="button" data-go="games" style="cursor: pointer; font-family: Unbounded, sans-serif; display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; background: #1b1b1a; color: #ecebe6; border: 0; border-radius: 999px; font-size: 14px; font-weight: 600">Choose a game <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div>
+<div><button type="button" class="btn-primary" data-go="games" style="cursor: pointer; font-family: Unbounded, sans-serif; display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; background: #1b1b1a; color: #ecebe6; border: 0; border-radius: 999px; font-size: 14px; font-weight: 600">Choose a game <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div>
 </section>
 </div>
 
@@ -522,16 +554,16 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 <div class="sc-panelwrap" data-panel="about" hidden>
 <section class="sc-panel" aria-label="About" style="flex: 1 1 auto; min-height: 0; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
 <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
-<h2 style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">About Shared Couch</h2>
+<h2 class="grad-text" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">About Shared Couch</h2>
 <p style="margin: 0; font-size: 15px; font-weight: 300; line-height: 1.7; color: #2c2b29; max-width: 560px">Shared Couch brings back the feeling of playing side by side — without consoles or extra controllers. One screen hosts the game, and everyone in the room plays with the phone already in their pocket.</p>
 <p style="margin: 0; font-size: 15px; font-weight: 300; line-height: 1.7; color: #2c2b29; max-width: 560px">Every game is built for the same quick loop: open, scan, ready, play. Short rounds, simple controls, and a shared screen to shout at.</p>
 <div style="font-size: 12px; color: #4a4945">sharedcouch.online</div>
 </div>
 <div style="flex: 1 1 380px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
-<div style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">Any screen</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">TV, PC, laptop or tablet — anything with a browser.</div></div>
-<div style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">No app</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">Phones open the controller straight from the QR code.</div></div>
-<div style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">Solo or duo</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">Most games are 1v1; some have a single-player mode.</div></div>
-<div style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">Free to play</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">Supported by players who chip in.</div></div>
+<div class="glass-card" style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">Any screen</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">TV, PC, laptop or tablet — anything with a browser.</div></div>
+<div class="glass-card" style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">No app</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">Phones open the controller straight from the QR code.</div></div>
+<div class="glass-card" style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">Solo or duo</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">Most games are 1v1; some have a single-player mode.</div></div>
+<div class="glass-card" style="background: #ecebe6; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><div style="font-size: 15px; font-weight: 700">Free to play</div><div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">Supported by players who chip in.</div></div>
 </div>
 </section>
 </div>
@@ -540,13 +572,13 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 <div class="sc-panelwrap" data-panel="support" hidden>
 <section class="sc-panel" aria-label="Support the project" style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px">
 <div style="display: flex; flex-direction: column; gap: 10px">
-<h2 style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">Support the project</h2>
+<h2 class="grad-text" style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em">Support the project</h2>
 <p style="margin: 0; font-size: 15px; font-weight: 300; line-height: 1.6; color: #2c2b29; max-width: 620px">Shared Couch is free and built by one person. If it made your game night, here's how you can help keep the servers running and new games coming.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
-<div style="background: #1A4361; color: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 20px; font-weight: 700">Donate</div><div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #d3dce3">A one-time tip covers hosting for the games.</div><button type="button" style="cursor: pointer; align-self: flex-start; font-family: Unbounded, sans-serif; padding: 14px 22px; background: #ecebe6; color: #1A4361; border: 0; border-radius: 999px; font-size: 13px; font-weight: 600">Coming soon</button></div>
-<div style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 20px; font-weight: 700">Share it</div><div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">Tell friends, or play it at your next get-together.</div><button type="button" style="cursor: pointer; align-self: flex-start; font-family: Unbounded, sans-serif; padding: 14px 22px; background: #1b1b1a; color: #ecebe6; border: 0; border-radius: 999px; font-size: 13px; font-weight: 600" data-copy>Copy link</button></div>
-<div style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 20px; font-weight: 700">Give feedback</div><div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">Report a bug or suggest the next game.</div><button type="button" style="cursor: pointer; align-self: flex-start; font-family: Unbounded, sans-serif; padding: 12px 20px; background: transparent; color: #1b1b1a; border: 2px solid #1b1b1a; border-radius: 999px; font-size: 13px; font-weight: 500">Coming soon</button></div>
+<div class="navy-card" style="background: #1A4361; color: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 20px; font-weight: 700">Donate</div><div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #d3dce3">A one-time tip covers hosting for the games.</div><button type="button" style="cursor: pointer; align-self: flex-start; font-family: Unbounded, sans-serif; padding: 14px 22px; background: #ecebe6; color: #1A4361; border: 0; border-radius: 999px; font-size: 13px; font-weight: 600">Coming soon</button></div>
+<div class="glass-card" style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 20px; font-weight: 700">Share it</div><div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">Tell friends, or play it at your next get-together.</div><button type="button" style="cursor: pointer; align-self: flex-start; font-family: Unbounded, sans-serif; padding: 14px 22px; background: #1b1b1a; color: #ecebe6; border: 0; border-radius: 999px; font-size: 13px; font-weight: 600" data-copy>Copy link</button></div>
+<div class="glass-card" style="background: #ecebe6; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px"><div style="font-size: 20px; font-weight: 700">Give feedback</div><div style="font-size: 13px; font-weight: 300; line-height: 1.6; color: #3a3936">Report a bug or suggest the next game.</div><button type="button" style="cursor: pointer; align-self: flex-start; font-family: Unbounded, sans-serif; padding: 12px 20px; background: transparent; color: #1b1b1a; border: 2px solid #1b1b1a; border-radius: 999px; font-size: 13px; font-weight: 500">Coming soon</button></div>
 </div>
 </section>
 </div>
