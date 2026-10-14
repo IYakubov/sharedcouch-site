@@ -30,6 +30,7 @@
 	import game navalduel     {$NAVALDUEL_UPSTREAM:shipyy.railway.internal:8080}
 	import game rockdrift     {$ROCKDRIFT_UPSTREAM:meteofight.railway.internal:8080}
 	import game echo          {$ECHO_UPSTREAM:echo.railway.internal:8080}
+	import game turretduo     {$TURRETDUO_UPSTREAM:halfworld.railway.internal:8080}
 
 	handle {
 		root * {$SITE_ROOT:/srv}

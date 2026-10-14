@@ -13,6 +13,7 @@ The front door of **sharedcouch.online**.
 | `/navalduel/` | shipyy |
 | `/rockdrift/` | meteofight |
 | `/echo/` | echo |
+| `/turretduo/` | halfworld |
 
 Each game is reached at `<private-name>.railway.internal:8080`. The upstream for a game can be overridden with a variable such as `MATHDUEL_UPSTREAM=host:port`.
 

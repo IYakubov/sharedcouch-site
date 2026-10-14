@@ -25,6 +25,10 @@ html,body{height:100%}
 .sc-panelwrap[hidden]{display:none}
 a.sc-card{color:inherit}
 .t-ico,.t-short{display:none}
+.sc-strip{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px 2px 8px;margin:-2px -2px -8px}
+.sc-strip::-webkit-scrollbar{display:none}
+.sc-strip > a{flex:0 0 120px !important;width:120px;scroll-snap-align:start}
+.sc-strip.more{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent)}
 @media (max-width: 900px){
   [data-panel="games"] > section > div:last-child{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-auto-rows:auto !important;min-height:0 !important;flex:none !important}
   [data-panel="games"] a.sc-card > div:first-child{flex:none !important;height:160px}
@@ -57,9 +61,8 @@ a.sc-card{color:inherit}
   [data-panel="home"] h1{font-size:33px !important;line-height:1.08 !important}
   [data-panel="home"] p{font-size:15px !important}
   [data-panel="home"] .btn-primary,[data-panel="home"] button[data-go="how"]{padding:14px 20px !important;font-size:13px !important}
-  [data-panel="home"] div[style*="repeat(6"]{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px !important;margin:0 -18px;padding:4px 18px 14px;scrollbar-width:none}
-  [data-panel="home"] div[style*="repeat(6"]::-webkit-scrollbar{display:none}
-  [data-panel="home"] div[style*="repeat(6"] > a{flex:0 0 136px !important;width:136px !important;scroll-snap-align:start}
+  .sc-strip{margin:0 -18px;padding:4px 18px 14px !important;-webkit-mask-image:none !important;mask-image:none !important}
+  .sc-strip > a{flex:0 0 136px !important;width:136px !important}
   .hero-glow{max-width:100% !important}
 
   /* games */
@@ -243,7 +246,7 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 </div>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px">
 <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #4a4945">Jump into a game</div>
-<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px">
+<div class="sc-strip" style="display: flex; gap: 10px">
 <a href="/tankwar/" data-players="duo" class="sc-card" aria-label="Play Tank War" style="all: unset; cursor: pointer; display: flex; flex-direction: column; background: #ecebe6; border: 1.5px solid #a5a39c; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 0 -1px #b9b7af">
 <div style="height: 64px; overflow: hidden"><svg viewBox="0 0 320 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="display: block; background: #cfcdc6" aria-hidden="true">
 <polygon points="120,60 160,44 190,66 176,104 132,100" fill="#a9a7a0"></polygon><polygon points="120,60 160,44 150,80" fill="#bdbbb4"></polygon>
@@ -317,6 +320,21 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 <circle cx="54" cy="102" r="4" fill="#1b1b1a"></circle><circle cx="67" cy="102" r="4" fill="#1b1b1a"></circle><circle cx="80" cy="102" r="4" fill="none" stroke="#1b1b1a" stroke-width="1.5"></circle><circle cx="93" cy="102" r="4" fill="none" stroke="#1b1b1a" stroke-width="1.5"></circle>
 </svg></div>
 <div style="padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 3px"><div style="font-size: 11px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Echo</div><div style="font-size: 9px; font-weight: 400; color: #4a4945">1–4 players</div></div>
+</a>
+<a href="/turretduo/" data-players="both" class="sc-card" aria-label="Play Turret Duo" style="all: unset; cursor: pointer; display: flex; flex-direction: column; background: #ecebe6; border: 1.5px solid #a5a39c; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 0 -1px #b9b7af">
+<div style="height: 64px; overflow: hidden"><svg viewBox="0 0 320 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="display: block; background: #cfcdc6" aria-hidden="true">
+<circle cx="160" cy="100" r="44" fill="#b9b7af" opacity=".7"></circle>
+<g fill="#bdb49c" stroke="#8f8670" stroke-width="1.2"><rect x="146" y="58" width="28" height="13" rx="6"></rect><rect x="146" y="129" width="28" height="13" rx="6"></rect><rect x="117" y="86" width="13" height="28" rx="6"></rect><rect x="190" y="86" width="13" height="28" rx="6"></rect><rect x="122" y="65" width="22" height="13" rx="6" transform="rotate(-45 133 71)"></rect><rect x="176" y="65" width="22" height="13" rx="6" transform="rotate(45 187 71)"></rect><rect x="122" y="122" width="22" height="13" rx="6" transform="rotate(45 133 128)"></rect><rect x="176" y="122" width="22" height="13" rx="6" transform="rotate(-45 187 128)"></rect></g>
+<circle cx="160" cy="100" r="27" fill="#c9c3b2"></circle>
+<g transform="translate(160 100) rotate(-28)"><rect x="6" y="-3.5" width="56" height="7" rx="2" fill="#1b1b1a"></rect><rect x="-14" y="-11" width="26" height="22" rx="4" fill="#3a3936"></rect><ellipse cx="-22" cy="0" rx="6" ry="10" fill="#1A4361"></ellipse><circle cx="-21" cy="0" r="5" fill="#6b6a62"></circle><circle cx="-12" cy="22" r="7" fill="none" stroke="#1b1b1a" stroke-width="2"></circle><ellipse cx="-12" cy="34" rx="10" ry="6" fill="#1b1b1a"></ellipse><circle cx="-12" cy="34" r="4.5" fill="#6b6a62"></circle><path d="M62 0 L70 -6 L68 -1.5 L78 0 L68 1.5 L70 6 Z" fill="#e8b24a"></path><circle cx="65" cy="0" r="3" fill="#f6dc9a"></circle></g>
+<path d="M226 64 L238 57 M248 51 L260 44" stroke="#e8b24a" stroke-width="3" stroke-linecap="round"></path>
+<g transform="translate(272 38) rotate(150)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="#5d6640"></ellipse><path d="M-5 -6 l-3 -8 M3 -6 l3 -8 M-5 6 l-3 8 M3 6 l3 8" stroke="#3a3936" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="-3" r="2.6" fill="#e8d9a8"></circle><circle cx="9" cy="3" r="2.6" fill="#e8d9a8"></circle></g>
+<g transform="translate(58 70) rotate(15)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="#6e4a6b"></ellipse><path d="M-5 -6 l-3 -8 M3 -6 l3 -8 M-5 6 l-3 8 M3 6 l3 8" stroke="#3a3936" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="-3" r="2.6" fill="#e8d9a8"></circle><circle cx="9" cy="3" r="2.6" fill="#e8d9a8"></circle></g>
+<g transform="translate(70 152) rotate(-25)"><ellipse cx="0" cy="0" rx="24" ry="15" fill="#4a5236"></ellipse><path d="M-9 -12 l-5 -12 M5 -12 l5 -12 M-9 12 l-5 12 M5 12 l5 12" stroke="#3a3936" stroke-width="2.6" stroke-linecap="round"></path><circle cx="16" cy="-5" r="4" fill="#e3b26b"></circle><circle cx="16" cy="5" r="4" fill="#e3b26b"></circle></g>
+<g transform="translate(250 150) rotate(200)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="#5d6640"></ellipse><path d="M-5 -6 l-3 -8 M3 -6 l3 -8 M-5 6 l-3 8 M3 6 l3 8" stroke="#3a3936" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="-3" r="2.6" fill="#e8d9a8"></circle><circle cx="9" cy="3" r="2.6" fill="#e8d9a8"></circle></g>
+<g transform="translate(230 114) rotate(-10)"><rect x="-10" y="-8" width="20" height="16" rx="2" fill="#b8893a" stroke="#1b1b1a" stroke-width="1.5"></rect><path d="M-3 4 v-5 q3 -6 6 0 v5z" fill="#1b1b1a"></path></g>
+</svg></div>
+<div style="padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 3px"><div style="font-size: 11px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Turret Duo</div><div style="font-size: 9px; font-weight: 400; color: #4a4945">1–2 players</div></div>
 </a>
 </div>
 </div>
@@ -598,6 +616,27 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
 </div>
 </a>
 </div>
+<div style="display: contents">
+<a href="/turretduo/" data-players="both" class="sc-card" aria-label="Play Turret Duo" style="all: unset; cursor: pointer; display: flex; flex-direction: column; min-height: 0; background: #ecebe6; border: 1.5px solid #a5a39c; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 0 -2px #b9b7af">
+<div style="flex: 1 1 auto; min-height: 110px; overflow: hidden"><svg viewBox="0 0 320 200" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="display: block; background: #cfcdc6" aria-hidden="true">
+<circle cx="160" cy="100" r="44" fill="#b9b7af" opacity=".7"></circle>
+<g fill="#bdb49c" stroke="#8f8670" stroke-width="1.2"><rect x="146" y="58" width="28" height="13" rx="6"></rect><rect x="146" y="129" width="28" height="13" rx="6"></rect><rect x="117" y="86" width="13" height="28" rx="6"></rect><rect x="190" y="86" width="13" height="28" rx="6"></rect><rect x="122" y="65" width="22" height="13" rx="6" transform="rotate(-45 133 71)"></rect><rect x="176" y="65" width="22" height="13" rx="6" transform="rotate(45 187 71)"></rect><rect x="122" y="122" width="22" height="13" rx="6" transform="rotate(45 133 128)"></rect><rect x="176" y="122" width="22" height="13" rx="6" transform="rotate(-45 187 128)"></rect></g>
+<circle cx="160" cy="100" r="27" fill="#c9c3b2"></circle>
+<g transform="translate(160 100) rotate(-28)"><rect x="6" y="-3.5" width="56" height="7" rx="2" fill="#1b1b1a"></rect><rect x="-14" y="-11" width="26" height="22" rx="4" fill="#3a3936"></rect><ellipse cx="-22" cy="0" rx="6" ry="10" fill="#1A4361"></ellipse><circle cx="-21" cy="0" r="5" fill="#6b6a62"></circle><circle cx="-12" cy="22" r="7" fill="none" stroke="#1b1b1a" stroke-width="2"></circle><ellipse cx="-12" cy="34" rx="10" ry="6" fill="#1b1b1a"></ellipse><circle cx="-12" cy="34" r="4.5" fill="#6b6a62"></circle><path d="M62 0 L70 -6 L68 -1.5 L78 0 L68 1.5 L70 6 Z" fill="#e8b24a"></path><circle cx="65" cy="0" r="3" fill="#f6dc9a"></circle></g>
+<path d="M226 64 L238 57 M248 51 L260 44" stroke="#e8b24a" stroke-width="3" stroke-linecap="round"></path>
+<g transform="translate(272 38) rotate(150)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="#5d6640"></ellipse><path d="M-5 -6 l-3 -8 M3 -6 l3 -8 M-5 6 l-3 8 M3 6 l3 8" stroke="#3a3936" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="-3" r="2.6" fill="#e8d9a8"></circle><circle cx="9" cy="3" r="2.6" fill="#e8d9a8"></circle></g>
+<g transform="translate(58 70) rotate(15)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="#6e4a6b"></ellipse><path d="M-5 -6 l-3 -8 M3 -6 l3 -8 M-5 6 l-3 8 M3 6 l3 8" stroke="#3a3936" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="-3" r="2.6" fill="#e8d9a8"></circle><circle cx="9" cy="3" r="2.6" fill="#e8d9a8"></circle></g>
+<g transform="translate(70 152) rotate(-25)"><ellipse cx="0" cy="0" rx="24" ry="15" fill="#4a5236"></ellipse><path d="M-9 -12 l-5 -12 M5 -12 l5 -12 M-9 12 l-5 12 M5 12 l5 12" stroke="#3a3936" stroke-width="2.6" stroke-linecap="round"></path><circle cx="16" cy="-5" r="4" fill="#e3b26b"></circle><circle cx="16" cy="5" r="4" fill="#e3b26b"></circle></g>
+<g transform="translate(250 150) rotate(200)"><ellipse cx="0" cy="0" rx="13" ry="8" fill="#5d6640"></ellipse><path d="M-5 -6 l-3 -8 M3 -6 l3 -8 M-5 6 l-3 8 M3 6 l3 8" stroke="#3a3936" stroke-width="2" stroke-linecap="round"></path><circle cx="9" cy="-3" r="2.6" fill="#e8d9a8"></circle><circle cx="9" cy="3" r="2.6" fill="#e8d9a8"></circle></g>
+<g transform="translate(230 114) rotate(-10)"><rect x="-10" y="-8" width="20" height="16" rx="2" fill="#b8893a" stroke="#1b1b1a" stroke-width="1.5"></rect><path d="M-3 4 v-5 q3 -6 6 0 v5z" fill="#1b1b1a"></path></g>
+</svg></div>
+<div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px"><div style="font-size: 17px; font-weight: 700; letter-spacing: -0.02em">Turret Duo</div><div style="font-size: 10px; font-weight: 600; padding: 5px 9px; border-radius: 999px; background: #1A4361; color: #ecebe6; white-space: nowrap">1–2 players</div></div>
+<div style="font-size: 12px; font-weight: 300; line-height: 1.5; color: #3a3936">One machine gun, two players: one turns it, one shoots. Hold off the crawling monsters.</div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span style="font-size: 10px; padding: 4px 9px; border-radius: 999px; background: #dddbd4">Co-op</span><span style="font-size: 10px; padding: 4px 9px; border-radius: 999px; background: #dddbd4">Shared controls</span><span style="font-size: 10px; padding: 4px 9px; border-radius: 999px; background: #dddbd4">Solo mode</span></div>
+</div>
+</a>
+</div>
 <div class="sc-soon" style="display: contents">
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 0; border: 2px dashed #a9a7a0; border-radius: 16px; padding: 20px; text-align: center">
 <svg class="bld" width="220" height="150" viewBox="0 0 220 150" role="img" aria-label="A new game being built">
@@ -716,6 +755,13 @@ a{color:#1b1b1a}a:hover{color:#1A4361}
     cards.forEach(function(c){c.parentNode.style.display = (f==='all'||c.dataset.players==='both'||c.dataset.players===f)?'contents':'none';});
     if(soon) soon.style.display = f==='all'?'contents':'none';
   });});
+
+  var strip=document.querySelector('.sc-strip');
+  if(strip){
+    var upd=function(){ strip.classList.toggle('more', strip.scrollWidth-strip.clientWidth-strip.scrollLeft>4); };
+    strip.addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+    strip.addEventListener('wheel',function(e){ if(Math.abs(e.deltaY)>Math.abs(e.deltaX) && strip.scrollWidth>strip.clientWidth){ var before=strip.scrollLeft; strip.scrollLeft+=e.deltaY; if(strip.scrollLeft!==before) e.preventDefault(); } },{passive:false});
+  }
 
   var copy=document.querySelector('[data-copy]');
   if(copy) copy.addEventListener('click',function(){
